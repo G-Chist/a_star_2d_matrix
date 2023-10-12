@@ -9,10 +9,6 @@ def find_element(arr, target):
     return None  # Return None if the element is not found
 
 
-def sum_arrays(a, b):
-    return [a[i] + b[i] for i in range(len(a))]
-
-
 def in_matrix(matrix, row, col):
     num_rows = len(matrix)
     num_cols = len(matrix[0]) if num_rows > 0 else 0
@@ -146,12 +142,13 @@ def search_path(matrix):
 
     return path
 
+if __name__ == "__main__":
 
-field = [
-[0, 0, 0, 0, 0],
-[0, 2, 0, 1, 1],
-[0, 0, 1, 1, 0],
-[0, 1, 0, 0, 3]]
+    field = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0],
+    [2, 1, 0, 0, 3]]
 
-field_path = search_path(field)
-print(f"Path: {field_path}")
+    field_path = search_path(field)
+    print(f"Path: {field_path}")
