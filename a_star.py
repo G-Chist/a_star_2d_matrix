@@ -152,3 +152,5 @@ if __name__ == "__main__":
 
     field_path = search_path(field)
     print(f"Path: {field_path}")
+
+#BAD COST ESTIMATION, FOLLOWS OBSTACLE "WALLS"
