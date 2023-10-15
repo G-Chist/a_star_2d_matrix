@@ -3,12 +3,14 @@ import sys
 import math
 import time
 
+
 def find_element(arr, target):
     for row in range(len(arr)):
         for col in range(len(arr[row])):
             if arr[row][col] == target:
                 return [row, col]
     return None  # Return None if the element is not found
+
 
 def sum_arrays(a, b):
     return [a[i] + b[i] for i in range(len(a))]
@@ -102,20 +104,23 @@ def search_path(matrix):
         #Put chosen point in closed stack
         closed_stack.append(chosen_point)
 
+        #Update open stack
+        for point in open_stack:
+            if point in closed_stack:
+                open_stack.remove(point)
+
         #Choose new point
         full_costs = sum_arrays(path_costs, [h_cost(point) for point in points])
         min_cost = float('inf')
         for point in open_stack:
-            if point not in closed_stack:
-                p_index = points.index(point) #Index of point in points
-                if full_costs[p_index] < min_cost:
-                    min_cost = full_costs[p_index]
+            p_index = points.index(point) #Index of point in points
+            if full_costs[p_index] < min_cost:
+                min_cost = full_costs[p_index]
 
         for point in open_stack:
-            if point not in closed_stack:
-                p_index = points.index(point)  # Index of point in points
-                if full_costs[p_index] == min_cost:
-                    chosen_point = points[p_index]
+            p_index = points.index(point)  # Index of point in points
+            if full_costs[p_index] == min_cost:
+                chosen_point = points[p_index]
 
         """
         print(f"Open stack:        {open_stack}")
@@ -304,5 +309,3 @@ while running:
 # Quit Pygame
 pygame.quit()
 sys.exit()
-
-#BAD COST ESTIMATION, FOLLOWS OBSTACLE "WALLS", DOES NOT TAKE DIJKSTRA COST INTO ACCOUNT
