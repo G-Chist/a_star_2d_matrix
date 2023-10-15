@@ -303,5 +303,3 @@ while running:
 # Quit Pygame
 pygame.quit()
 sys.exit()
-
-#BAD COST ESTIMATION, FOLLOWS OBSTACLE "WALLS", DOES NOT TAKE DIJKSTRA COST INTO ACCOUNT
