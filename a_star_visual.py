@@ -105,9 +105,8 @@ def search_path(matrix):
         closed_stack.append(chosen_point)
 
         #Update open stack
-        for point in open_stack:
-            if point in closed_stack:
-                open_stack.remove(point)
+        if chosen_point in open_stack:
+            open_stack.remove(chosen_point)
 
         #Choose new point
         full_costs = sum_arrays(path_costs, [h_cost(point) for point in points])
@@ -118,7 +117,7 @@ def search_path(matrix):
                 min_cost = full_costs[p_index]
 
         for point in open_stack:
-            p_index = points.index(point)  # Index of point in points
+            p_index = points.index(point)  #Index of point in points
             if full_costs[p_index] == min_cost:
                 chosen_point = points[p_index]
 
